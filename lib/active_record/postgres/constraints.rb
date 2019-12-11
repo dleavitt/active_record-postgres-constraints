@@ -6,6 +6,7 @@ module ActiveRecord
       CONSTRAINT_TYPES = {
         check: 'c',
         exclude: 'x',
+        unique: 'u',
       }.freeze
 
       def self.class_for_constraint_type(type)
@@ -30,4 +31,5 @@ require_relative 'constraints/schema_dumper'
 require_relative 'constraints/table_definition'
 require_relative 'constraints/types/check'
 require_relative 'constraints/types/exclude'
+require_relative 'constraints/types/unique'
 require_relative 'constraints/version'
