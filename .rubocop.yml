@@ -1,5 +1,3 @@
-require: osm-rubocop
-
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
