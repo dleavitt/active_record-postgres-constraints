@@ -7,6 +7,7 @@ env:
   - POSTGRESQL_VERSION=10.11
   - POSTGRESQL_VERSION=11.6
   - POSTGRESQL_VERSION=12.1
+  - POSTGRESQL_VERSION=12.2
 rvm:
   - 2.3.0
   - 2.4.0
@@ -27,6 +28,9 @@ before_install:
   - sudo service postgresql stop && sudo service postgresql start $POSTGRESQL_VERSION
   - gem install --force bundler -v 1.17.3
 script:
+  - echo $POSTGRESQL_VERSION
+  - psql --version
+  - psql -U postgres -tc 'SHOW server_version'
   - bundle _1.17.3_ exec rubocop
   - sh -c 'cd spec/dummy && bundle _1.17.3_ exec bin/rake db:reset'
   - sh -c 'cd spec/dummy && bundle _1.17.3_ exec bin/rake parallel:create[3]'
